@@ -1,440 +1,523 @@
-    body {
-        background-color: #111827;
-        display: grid;
-        gap: 30px;
-        grid-template-columns: 1fr;
-        place-items: center;
-        min-height: 100vh;
-        padding: 30px 0;
-        font-family: 'Urbanist', sans-serif;
-    }
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - Patrick Ramos Costa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* THE SETUP */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    .slide-container {
-        width: 1280px;
-        height: 720px;
-        background-color: #030712;
-        border-radius: 12px;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        overflow: hidden;
-        padding: 60px;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-    }
+        body {
+            background-color: #111827;
+            display: grid;
+            gap: 30px;
+            grid-template-columns: 1fr;
+            place-items: center;
+            min-height: 100vh;
+            padding: 30px 0;
+            font-family: 'Urbanist', sans-serif;
+        }
 
-    /* Decorative Bottom Line */
-    .slide-container::after {
-        content: '';
-        position: absolute;
-        bottom: 40px;
-        left: 60px;
-        right: 60px;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.3), transparent);
-    }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #030712;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            padding: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
 
-    /* TYPOGRAPHY */
-    .slide-container h1, .slide-container h2, .slide-container h3 {
-        color: #f9fafb;
-        font-weight: 700;
-    }
+        /* Decorative Bottom Line */
+        .slide-container::after {
+            content: '';
+            position: absolute;
+            bottom: 40px;
+            left: 60px;
+            right: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.3), transparent);
+        }
 
-    .slide-container h1 span, .slide-container h2 span, .accent {
-        color: #00ff9d; /* Cyber Green */
-    }
+        /* TYPOGRAPHY */
+        .slide-container h1, .slide-container h2, .slide-container h3 {
+            color: #f9fafb;
+            font-weight: 700;
+        }
 
-    .slide-container p, .slide-container li, .slide-container .subtitle {
-        color: #d1d5db;
-        font-size: 19px;
-        line-height: 1.6;
-        font-weight: 400;
-    }
+        .slide-container h1 span, .slide-container h2 span, .accent {
+            color: #00ff9d; /* Cyber Green */
+        }
 
-    .slide-container h1 { font-size: 75px; letter-spacing: -1px; margin-bottom: 20px;}
-    .slide-container .slide-title { font-size: 48px; margin-bottom: 40px; text-align: left; width: 100%; }
-    .slide-container h3 { font-size: 26px; margin-bottom: 15px; }
+        .slide-container p, .slide-container li, .slide-container .subtitle {
+            color: #d1d5db;
+            font-size: 19px;
+            line-height: 1.6;
+            font-weight: 400;
+        }
 
-    .content-area {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-        width: 100%;
-    }
+        .slide-container h1 { font-size: 75px; letter-spacing: -1px; margin-bottom: 20px;}
+        .slide-container .slide-title { font-size: 48px; margin-bottom: 40px; text-align: left; width: 100%; }
+        .slide-container h3 { font-size: 26px; margin-bottom: 15px; }
 
-    /* LAYOUT: Title Slide */
-    .title-layout {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        text-align: center;
-    }
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            width: 100%;
+        }
 
-    .title-layout .subtitle {
-        font-size: 26px;
-        color: #9ca3af;
-        max-width: 800px;
-        margin-bottom: 50px;
-    }
+        /* LAYOUT: Title Slide */
+        .title-layout {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+        }
 
-    .contact-row {
-        display: flex;
-        gap: 35px;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
+        .title-layout .subtitle {
+            font-size: 26px;
+            color: #9ca3af;
+            max-width: 800px;
+            margin-bottom: 50px;
+        }
 
-    .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-size: 18px;
-        color: #f3f4f6;
-        background: rgba(255, 255, 255, 0.03);
-        padding: 12px 24px;
-        border-radius: 50px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-    }
+        .contact-row {
+            display: flex;
+            gap: 35px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
 
-    .contact-item i {
-        color: #00ff9d;
-        font-size: 20px;
-    }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 18px;
+            color: #f3f4f6;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
 
-    /* LAYOUT: Bleed Image Right */
-    .slide-container.bleed-image-layout {
-        padding: 0;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        align-items: start;
-    }
+        .contact-item i {
+            color: #00ff9d;
+            font-size: 20px;
+        }
 
-    .slide-container.bleed-image-layout > .content-container {
-        padding: 60px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 720px;
-    }
+        /* LAYOUT: Bleed Image Right */
+        .slide-container.bleed-image-layout {
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            align-items: start;
+        }
 
-    .slide-container.bleed-image-layout > .image-container {
-        height: 720px;
-        width: 100%;
-        overflow: hidden;
-    }
+        .slide-container.bleed-image-layout > .content-container {
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 720px;
+        }
 
-    .slide-container.bleed-image-layout img.bleed-image-side {
-        display: block;
-        height: 720px;
-        width: 100%;
-        object-fit: cover;
-        object-position: center;
-        border-left: 2px solid #00ff9d;
-    }
+        .slide-container.bleed-image-layout > .image-container {
+            height: 720px;
+            width: 100%;
+            overflow: hidden;
+        }
 
-    .bleed-text-side p {
-        margin-bottom: 20px;
-    }
+        .slide-container.bleed-image-layout img.bleed-image-side {
+            display: block;
+            height: 720px;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-left: 2px solid #00ff9d;
+        }
 
-    /* LAYOUT: Timeline */
-    .timeline-layout {
-        align-items: center;
-        display: flex;
-        height: 350px;
-        justify-content: space-between;
-        position: relative;
-        width: 100%;
-        margin-top: 40px;
-    }
+        .bleed-text-side p {
+            margin-bottom: 20px;
+        }
 
-    .timeline-line {
-        background: linear-gradient(90deg, rgba(0, 255, 157, 0.1), #00ff9d, rgba(0, 255, 157, 0.1));
-        height: 2px;
-        left: 0;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-1px);
-        width: 100%;
-        z-index: 0;
-    }
+        /* LAYOUT: Timeline */
+        .timeline-layout {
+            align-items: center;
+            display: flex;
+            height: 350px;
+            justify-content: space-between;
+            position: relative;
+            width: 100%;
+            margin-top: 40px;
+        }
 
-    .timeline-item {
-        position: relative;
-        text-align: center;
-        width: 30%;
-    }
+        .timeline-line {
+            background: linear-gradient(90deg, rgba(0, 255, 157, 0.1), #00ff9d, rgba(0, 255, 157, 0.1));
+            height: 2px;
+            left: 0;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-1px);
+            width: 100%;
+            z-index: 0;
+        }
 
-    .timeline-item::after {
-        background-color: #030712;
-        border: 4px solid #00ff9d;
-        border-radius: 50%;
-        content: '';
-        height: 24px;
-        left: 50%;
-        position: absolute;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: 24px;
-        z-index: 1;
-    }
+        .timeline-item {
+            position: relative;
+            text-align: center;
+            width: 30%;
+        }
 
-    .timeline-item .content-wrapper {
-        position: absolute;
-        width: 100%;
-        left: 0;
-    }
+        .timeline-item::after {
+            background-color: #030712;
+            border: 4px solid #00ff9d;
+            border-radius: 50%;
+            content: '';
+            height: 24px;
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            z-index: 1;
+        }
 
-    .timeline-item:nth-child(odd) .content-wrapper {
-        bottom: 50%;
-        margin-bottom: 35px;
-    }
+        .timeline-item .content-wrapper {
+            position: absolute;
+            width: 100%;
+            left: 0;
+        }
 
-    .timeline-item:nth-child(even) .content-wrapper {
-        top: 50%;
-        margin-top: 35px;
-    }
+        .timeline-item:nth-child(odd) .content-wrapper {
+            bottom: 50%;
+            margin-bottom: 35px;
+        }
 
-    .timeline-item h3 {
-        color: #00ff9d;
-        font-size: 22px;
-        margin-bottom: 5px;
-    }
+        .timeline-item:nth-child(even) .content-wrapper {
+            top: 50%;
+            margin-top: 35px;
+        }
 
-    .timeline-item .date {
-        color: #9ca3af;
-        font-size: 16px;
-        margin-bottom: 10px;
-        font-weight: 700;
-    }
+        .timeline-item h3 {
+            color: #00ff9d;
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
 
-    .timeline-item p {
-        font-size: 16px;
-    }
+        .timeline-item .date {
+            color: #9ca3af;
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
 
-    /* LAYOUT: Tiled Layout (4 Grid) */
-    .tiled-content.grid-4 {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-        width: 100%;
-        height: 100%;
-        align-content: start;
-    }
+        .timeline-item p {
+            font-size: 16px;
+        }
 
-    .tile {
-        background-color: rgba(255, 255, 255, 0.02);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 16px;
-        padding: 30px;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        transition: border-color 0.3s ease;
-    }
+        /* LAYOUT: Tiled Layout (4 Grid) */
+        .tiled-content.grid-4 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            width: 100%;
+            height: 100%;
+            align-content: start;
+        }
 
-    .tile:hover {
-        border-color: rgba(0, 255, 157, 0.3);
-    }
+        .tile {
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: border-color 0.3s ease;
+        }
 
-    .tile .title-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-    }
+        .tile:hover {
+            border-color: rgba(0, 255, 157, 0.3);
+        }
 
-    .tile .main-title {
-        color: #00ff9d;
-        font-size: 22px;
-        font-weight: 700;
-        margin: 0;
-        line-height: 1.3;
-    }
+        .tile .title-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
 
-    .tile .sub-title {
-        color: #f9fafb;
-        font-size: 18px;
-        margin: 8px 0 0 0;
-    }
+        .tile .main-title {
+            color: #00ff9d;
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.3;
+        }
 
-    .tile .icon-container {
-        background-color: rgba(0, 255, 157, 0.1);
-        color: #00ff9d;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 55px;
-        width: 55px;
-        font-size: 22px;
-        flex-shrink: 0;
-    }
+        .tile .sub-title {
+            color: #f9fafb;
+            font-size: 18px;
+            margin: 8px 0 0 0;
+        }
 
-    .tile .status {
-        display: inline-block;
-        padding: 4px 12px;
-        border-radius: 30px;
-        font-size: 14px;
-        font-weight: 700;
-        margin-top: 10px;
-        align-self: flex-start;
-    }
+        .tile .icon-container {
+            background-color: rgba(0, 255, 157, 0.1);
+            color: #00ff9d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 55px;
+            width: 55px;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
 
-    .status.iniciando { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
-    .status.concluido { background: rgba(16, 185, 129, 0.2); color: #34d399; }
-    .status.incompleto { background: rgba(107, 114, 128, 0.2); color: #9ca3af; }
+        .tile .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-top: 10px;
+            align-self: flex-start;
+        }
 
-    /* LAYOUT: Two Column Tiled Text (Bullets) */
-    .two-column.tiled {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-        width: 100%;
-        align-items: stretch;
-        height: 480px;
-    }
+        .status.iniciando { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+        .status.concluido { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+        .status.incompleto { background: rgba(107, 114, 128, 0.2); color: #9ca3af; }
 
-    .two-column.tiled > div {
-        background-color: rgba(255, 255, 255, 0.02);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 16px;
-        padding: 40px;
-        display: flex;
-        flex-direction: column;
-    }
+        /* LAYOUT: Two Column Tiled Text (Bullets) */
+        .two-column.tiled {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            width: 100%;
+            align-items: stretch;
+            height: 480px;
+        }
 
-    .two-column.tiled h3 {
-        color: #00ff9d;
-        font-size: 28px;
-        margin-bottom: 25px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        padding-bottom: 15px;
-    }
+        .two-column.tiled > div {
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
 
-    .two-column.tiled ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
+        .two-column.tiled h3 {
+            color: #00ff9d;
+            font-size: 28px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+        }
 
-    .two-column.tiled li {
-        padding-left: 35px;
-        position: relative;
-        color: #d1d5db;
-    }
+        .two-column.tiled ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-    .two-column.tiled li i {
-        position: absolute;
-        left: 0;
-        top: 5px;
-        color: #00ff9d;
-        font-size: 18px;
-    }
+        .two-column.tiled li {
+            padding-left: 35px;
+            position: relative;
+            color: #d1d5db;
+        }
 
-    .two-column.tiled li strong {
-        color: #f9fafb;
-        display: block;
-        margin-bottom: 4px;
-    }
+        .two-column.tiled li i {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: #00ff9d;
+            font-size: 18px;
+        }
 
-</style>
+        .two-column.tiled li strong {
+            color: #f9fafb;
+            display: block;
+            margin-bottom: 4px;
+        }
 
-
-    <div class="contact-row">
-        <span class="contact-item"><i class="fa-solid fa-phone"></i> (96) 9 9907-9407</span>
-        <span class="contact-item"><i class="fa-solid fa-envelope"></i> patrickramos737@gmail.com</span>
-        <span class="contact-item"><i class="fa-brands fa-linkedin"></i> patrick-ramos-costa-b78940211</span>
-        <span class="contact-item"><i class="fa-solid fa-location-dot"></i> Macapá, AP</span>
-    </div>
-</div>
+    </style>
+</head>
+<body>
 
 
-        <div class="timeline-item">
-            <div class="content-wrapper">
-                <div class="date">Fev 2022 - Jan 2025</div>
-                <h3>Agente de Pesquisas</h3>
-                <p style="color: #f9fafb; font-weight: 500; margin-bottom: 8px;">IBGE</p>
-                <p>Atuação com elevado rigor metodológico na coleta, processamento e análise de dados. Desenvolvimento de visão analítica crítica e identificação de padrões.</p>
-            </div>
-        </div>
+<div class="slide-container" id="slide1">
+    <div class="title-layout">
+        <h1>Patrick <span>Ramos Costa</span></h1>
+        <p class="subtitle">Analista de Sistemas & Especialista em Cibersegurança</p>
         
-        <div class="timeline-item">
-            <div class="content-wrapper">
-                <div class="date">Jan 2019 - Dez 2020</div>
-                <h3>Estagiário</h3>
-                <p style="color: #f9fafb; font-weight: 500; margin-bottom: 8px;">Ministério Público (AP)</p>
-                <p>Suporte a processos administrativos institucionais, vivência com documentação formal, segurança da informação documental e familiaridade estrutural pública.</p>
-            </div>
+        <div class="contact-row">
+            <span class="contact-item"><i class="fa-solid fa-phone"></i> (96) 9 9907-9407</span>
+            <span class="contact-item"><i class="fa-solid fa-envelope"></i> patrickramos737@gmail.com</span>
+            <span class="contact-item"><i class="fa-brands fa-linkedin"></i> patrick-ramos-costa-b78940211</span>
+            <span class="contact-item"><i class="fa-solid fa-location-dot"></i> Macapá, AP</span>
         </div>
-        
-        <div class="timeline-item">
-            <div class="content-wrapper">
-                <div class="date">Jan 2017 - Dez 2017</div>
-                <h3>Bolsista Iniciação Científica</h3>
-                <p style="color: #f9fafb; font-weight: 500; margin-bottom: 8px;">CNPq / OBMEP</p>
-                <p>Projeto avançado por ser aluno premiado na OBMEP. Foco intensivo no desenvolvimento contínuo do raciocínio lógico-matemático e algorítmico.</p>
-            </div>
-        </div>
-        
     </div>
 </div>
 
 
-        <div class="tile">
-            <div class="title-container">
-                <div>
-                    <p class="main-title">Crimes Cibernéticos e Forense</p>
-                    <p class="sub-title">Faculdade UniBF</p>
-                </div>
-                <span class="icon-container"><i class="fa-solid fa-shield-halved"></i></span>
-            </div>
-            <span class="status iniciando">Iniciando (Mar/2026)</span>
-            <p style="margin-top: 5px;">Especialização Lato Sensu focada em investigação digital, resposta a incidentes e direito digital.</p>
+<div class="slide-container bleed-image-layout" id="slide2">
+    <div class="content-container">
+        <h2 class="slide-title">Perfil <span>Profissional</span></h2>
+        <div class="bleed-text-side">
+            <p>Recém-formado em Análise e Desenvolvimento de Sistemas, possuo sólida compreensão da lógica e arquitetura tecnológica que movem as infraestruturas modernas.</p>
+            <p>Atualmente, direciono esta base técnica primária para a proteção, mitigação e auditoria de sistemas, <span class="accent">iniciando minha especialização</span> em Crimes Cibernéticos e Técnicas Forenses.</p>
+            <p>Minha vivência estratégica em instituições como o IBGE e o Ministério Público consolidou um forte perfil analítico, elevado rigor metodológico e alta capacidade de resolução de problemas complexos.</p>
+            <p>Busco atuar ativamente nas verticais de Segurança da Informação, Resposta a Incidentes e Forense Computacional, identificando vulnerabilidades e apoiando a tomada de decisões em ambientes corporativos e públicos.</p>
         </div>
-
-        <div class="tile">
-            <div class="title-container">
-                <div>
-                    <p class="main-title">Análise e Desenv. de Sistemas</p>
-                    <p class="sub-title">Faculdade UniBF</p>
-                </div>
-                <span class="icon-container"><i class="fa-solid fa-code"></i></span>
-            </div>
-            <span class="status concluido">Concluído (Fev/2026)</span>
-            <p style="margin-top: 5px;">Grau de Tecnólogo. Base sólida em arquitetura de software, lógica estrutural e banco de dados.</p>
-        </div>
-
-        <div class="tile">
-            <div class="title-container">
-                <div>
-                    <p class="main-title">Ciência da Computação</p>
-                    <p class="sub-title">Universidade Federal do Amapá</p>
-                </div>
-                <span class="icon-container"><i class="fa-solid fa-microchip"></i></span>
-            </div>
-            <span class="status incompleto">Incompleto (Início: 2022)</span>
-            <p style="margin-top: 5px;">Fundamentos de hardware, teoria da computação e algoritmos avançados absorvidos durante o período.</p>
-        </div>
-
-        <div class="tile">
-            <div class="title-container">
-                <div>
-                    <p class="main-title">Letras - Português</p>
-                    <p class="sub-title">Universidade do Estado do Amapá</p>
-                </div>
-                <span class="icon-container"><i class="fa-solid fa-book-open"></i></span>
-            </div>
-            <span class="status incompleto">Incompleto (2021-2022)</span>
-            <p style="margin-top: 5px;">Desenvolvimento de habilidades avançadas em comunicação escrita, interpretação e rigor gramatical.</p>
-        </div>
-
+    </div>
+    <div class="image-container">
+        <img class="bleed-image-side" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" alt="Conceito profissional de cibersegurança">
     </div>
 </div>
 
 
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">Experiência <span>Profissional</span></h2>
+    <div class="content-area">
+        <div class="timeline-layout">
+            <div class="timeline-line"></div>
+            
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <div class="date">Fev 2022 - Jan 2025</div>
+                    <h3>Agente de Pesquisas</h3>
+                    <p style="color: #f9fafb; font-weight: 500; margin-bottom: 8px;">IBGE</p>
+                    <p>Atuação com elevado rigor metodológico na coleta, processamento e análise de dados. Desenvolvimento de visão analítica crítica e identificação de padrões.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <div class="date">Jan 2019 - Dez 2020</div>
+                    <h3>Estagiário</h3>
+                    <p style="color: #f9fafb; font-weight: 500; margin-bottom: 8px;">Ministério Público (AP)</p>
+                    <p>Suporte a processos administrativos institucionais, vivência com documentação formal, segurança da informação documental e familiaridade estrutural pública.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <div class="date">Jan 2017 - Dez 2017</div>
+                    <h3>Bolsista Iniciação Científica</h3>
+                    <p style="color: #f9fafb; font-weight: 500; margin-bottom: 8px;">CNPq / OBMEP</p>
+                    <p>Projeto avançado por ser aluno premiado na OBMEP. Foco intensivo no desenvolvimento contínuo do raciocínio lógico-matemático e algorítmico.</p>
+                </div>
+            </div>
+            
+        </div>
     </div>
 </div>
+
+
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">Formação <span>Acadêmica</span></h2>
+    <div class="content-area">
+        <div class="tiled-content grid-4">
+            
+            <div class="tile">
+                <div class="title-container">
+                    <div>
+                        <p class="main-title">Crimes Cibernéticos e Forense</p>
+                        <p class="sub-title">Faculdade UniBF</p>
+                    </div>
+                    <span class="icon-container"><i class="fa-solid fa-shield-halved"></i></span>
+                </div>
+                <span class="status iniciando">Iniciando (Mar/2026)</span>
+                <p style="margin-top: 5px;">Especialização Lato Sensu focada em investigação digital, resposta a incidentes e direito digital.</p>
+            </div>
+
+            <div class="tile">
+                <div class="title-container">
+                    <div>
+                        <p class="main-title">Análise e Desenv. de Sistemas</p>
+                        <p class="sub-title">Faculdade UniBF</p>
+                    </div>
+                    <span class="icon-container"><i class="fa-solid fa-code"></i></span>
+                </div>
+                <span class="status concluido">Concluído (Fev/2026)</span>
+                <p style="margin-top: 5px;">Grau de Tecnólogo. Base sólida em arquitetura de software, lógica estrutural e banco de dados.</p>
+            </div>
+
+            <div class="tile">
+                <div class="title-container">
+                    <div>
+                        <p class="main-title">Ciência da Computação</p>
+                        <p class="sub-title">Universidade Federal do Amapá</p>
+                    </div>
+                    <span class="icon-container"><i class="fa-solid fa-microchip"></i></span>
+                </div>
+                <span class="status incompleto">Incompleto (Início: 2022)</span>
+                <p style="margin-top: 5px;">Fundamentos de hardware, teoria da computação e algoritmos avançados absorvidos durante o período.</p>
+            </div>
+
+            <div class="tile">
+                <div class="title-container">
+                    <div>
+                        <p class="main-title">Letras - Português</p>
+                        <p class="sub-title">Universidade do Estado do Amapá</p>
+                    </div>
+                    <span class="icon-container"><i class="fa-solid fa-book-open"></i></span>
+                </div>
+                <span class="status incompleto">Incompleto (2021-2022)</span>
+                <p style="margin-top: 5px;">Desenvolvimento de habilidades avançadas em comunicação escrita, interpretação e rigor gramatical.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">Hard Skills, Certificações & <span>Prêmios</span></h2>
+    <div class="content-area">
+        <div class="two-column tiled">
+            
+            <div>
+                <h3><i class="fa-solid fa-crosshairs" style="margin-right: 10px;"></i> Competências Técnicas & Perfil</h3>
+                <ul>
+                    <li><i class="fa-solid fa-lock"></i> <strong>Segurança da Informação:</strong> Cibersegurança, Resposta a Incidentes, Forense Computacional, Cibercriminalidade.</li>
+                    <li><i class="fa-solid fa-network-wired"></i> <strong>Tecnologia Base:</strong> Análise de Sistemas, Lógica de Programação, Análise e Estruturação de Dados.</li>
+                    <li><i class="fa-solid fa-brain"></i> <strong>Soft Skills & Perfil:</strong> Forte perfil analítico, Rigor Metodológico, Resolução de Problemas Complexos.</li>
+                    <li><i class="fa-solid fa-language"></i> <strong>Idiomas:</strong> Português (Nativo) e Inglês (Leitura Técnica/Básico).</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3><i class="fa-solid fa-award" style="margin-right: 10px;"></i> Cursos & Premiações</h3>
+                <ul>
+                    <li><i class="fa-solid fa-certificate"></i> <strong>Imersão Dev com Google Gemini</strong><br>Atualização tecnológica focada no uso de Inteligência Artificial generativa para desenvolvimento.</li>
+                    <li><i class="fa-solid fa-certificate"></i> <strong>Semana da Computação</strong><br>Certificado de Atividade - Esquenta da Semana da Computação. Engajamento na comunidade tech.</li>
+                    <li><i class="fa-solid fa-trophy" style="color: #fbbf24;"></i> <strong>Aluno Premiado na OBMEP</strong><br>Medalhista/Premiado na Olimpíada Brasileira de Matemática das Escolas Públicas.</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
