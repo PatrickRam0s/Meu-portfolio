@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* THE SETUP */
+        /* CONFIGURAÇÃO BASE */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -29,12 +29,12 @@
             position: relative;
         }
 
-        /* TRANSLATION SYSTEM */
+        /* SISTEMA DE TRADUÇÃO */
         .t-en { display: none; }
         body.english-mode .t-pt { display: none; }
         body.english-mode .t-en { display: inline; }
 
-        /* LANGUAGE BUTTON */
+        /* BOTÃO DE IDIOMA */
         .lang-toggle-btn {
             position: fixed;
             top: 20px;
@@ -69,7 +69,7 @@
             font-size: 18px;
         }
 
-        /* SLIDE CONTAINER */
+        /* CONTENTOR DE SLIDES */
         .slide-container {
             width: 100%;
             max-width: 1280px;
@@ -86,7 +86,7 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Decorative Bottom Line */
+        /* Linha Decorativa Inferior */
         .slide-container::after {
             content: '';
             position: absolute;
@@ -97,14 +97,14 @@
             background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.3), transparent);
         }
 
-        /* TYPOGRAPHY */
+        /* TIPOGRAFIA */
         .slide-container h1, .slide-container h2, .slide-container h3 {
             color: #f9fafb;
             font-weight: 700;
         }
 
         .slide-container h1 span, .slide-container h2 span, .accent {
-            color: #00ff9d; /* Cyber Green */
+            color: #00ff9d; /* Verde Ciber */
         }
 
         .slide-container p, .slide-container li, .slide-container .subtitle {
@@ -139,7 +139,7 @@
             width: 100%;
         }
 
-        /* LAYOUT: Title Slide */
+        /* LAYOUT: Título */
         .title-layout {
             display: flex;
             flex-direction: column;
@@ -191,7 +191,7 @@
             font-size: 20px;
         }
 
-        /* LAYOUT: Bleed Image Right */
+        /* LAYOUT: Imagem Lateral */
         .slide-container.bleed-image-layout {
             padding: 0;
             display: grid;
@@ -301,7 +301,7 @@
             font-size: clamp(14px, 2vw, 16px);
         }
 
-        /* LAYOUT: Tiled Layout (4 Grid) */
+        /* LAYOUT: Grelha 4 Itens */
         .tiled-content.grid-4 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -374,7 +374,7 @@
         .status.concluido { background: rgba(16, 185, 129, 0.2); color: #34d399; }
         .status.incompleto { background: rgba(107, 114, 128, 0.2); color: #9ca3af; }
 
-        /* LAYOUT: Two Column Tiled Text (Bullets) */
+        /* LAYOUT: Duas Colunas Balas */
         .two-column.tiled {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -431,9 +431,24 @@
             margin-bottom: 4px;
         }
 
-        /* =========================================
-           RESPONSIVE DESIGN (MOBILE & TABLETS)
-           ========================================= */
+        /* RODAPÉ / FOOTER */
+        footer {
+            width: 100%;
+            max-width: 1280px;
+            padding: 40px 15px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 20px;
+        }
+
+        footer p {
+            color: #6b7280;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* RESPONSIVIDADE */
         @media (max-width: 992px) {
             .slide-container { padding: 40px 30px; min-height: auto; }
             .slide-container::after { left: 30px; right: 30px; }
@@ -442,7 +457,6 @@
             .slide-container.bleed-image-layout > .image-container { height: 300px; order: -1; }
             .slide-container.bleed-image-layout img.bleed-image-side { border-left: none; border-bottom: 2px solid #00ff9d; }
 
-            /* Timeline Mobile Fix */
             .timeline-layout { flex-direction: column; align-items: flex-start; gap: 40px; margin-top: 20px; }
             .timeline-line { width: 2px; height: 100%; left: 11px; top: 0; transform: none; background: linear-gradient(180deg, rgba(0, 255, 157, 0.1), #00ff9d, rgba(0, 255, 157, 0.1)); }
             .timeline-item { width: 100%; text-align: left; padding-left: 45px; }
@@ -463,12 +477,12 @@
 </head>
 <body>
 
-<!-- Language Switcher Button -->
+<!-- Botão de Troca de Idioma -->
 <button class="lang-toggle-btn" onclick="toggleLanguage()" title="Switch Language">
     <i class="fa-solid fa-globe"></i> <span id="lang-text">EN</span>
 </button>
 
-<!-- Slide 1: Title Slide -->
+<!-- Slide 1: Título -->
 <div class="slide-container" id="slide1">
     <div class="title-layout">
         <h1>Patrick <span>Ramos Costa</span></h1>
@@ -487,7 +501,7 @@
     </div>
 </div>
 
-<!-- Slide 2: Bleed Image Layout -->
+<!-- Slide 2: Perfil Profissional -->
 <div class="slide-container bleed-image-layout" id="slide2">
     <div class="content-container">
         <h2 class="slide-title">
@@ -518,7 +532,7 @@
     </div>
 </div>
 
-<!-- Slide 3: Timeline -->
+<!-- Slide 3: Experiência -->
 <div class="slide-container" id="slide3">
     <h2 class="slide-title">
         <span class="t-pt">Experiência <span>Profissional & Acadêmica</span></span>
@@ -589,7 +603,7 @@
     </div>
 </div>
 
-<!-- Slide 4: Education Grid -->
+<!-- Slide 4: Formação -->
 <div class="slide-container" id="slide4">
     <h2 class="slide-title">
         <span class="t-pt">Formação <span>Acadêmica</span></span>
@@ -692,7 +706,7 @@
     </div>
 </div>
 
-<!-- Slide 5: Skills & Awards -->
+<!-- Slide 5: Skills & Prêmios -->
 <div class="slide-container" id="slide5">
     <h2 class="slide-title">
         <span class="t-pt">Hard Skills, Certificações & <span>Prêmios</span></span>
@@ -771,28 +785,6 @@
         </div>
     </div>
 </div>
-
-<script>
-    function toggleLanguage() {
-        // Alterna a classe no body que esconde/mostra as traduções
-        document.body.classList.toggle('english-mode');
-        
-        // Atualiza o texto do botão e a meta tag HTML
-        const btnText = document.getElementById('lang-text');
-        const htmlTag = document.getElementById('html-tag');
-        
-        if (document.body.classList.contains('english-mode')) {
-            btnText.innerText = 'PT';
-            htmlTag.lang = 'en';
-        } else {
-            btnText.innerText = 'EN';
-            htmlTag.lang = 'pt-BR';
-        }
-    }
-</script>
-
-</body>
-</html>
 
 <!-- RODAPÉ FINAL -->
 <footer>
