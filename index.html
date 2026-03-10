@@ -793,3 +793,33 @@
 
 </body>
 </html>
+
+<!-- RODAPÉ FINAL -->
+<footer>
+    <p>
+        <span class="t-pt">&copy; 2026 Patrick Ramos Costa. Todos os direitos reservados.</span>
+        <span class="t-en">&copy; 2026 Patrick Ramos Costa. All rights reserved.</span>
+    </p>
+</footer>
+
+<script>
+    function toggleLanguage() {
+        // Alterna a classe no body que esconde/mostra as traduções
+        document.body.classList.toggle('english-mode');
+        
+        // Atualiza o texto do botão e a meta tag HTML
+        const btnText = document.getElementById('lang-text');
+        const htmlTag = document.getElementById('html-tag');
+        
+        if (document.body.classList.contains('english-mode')) {
+            btnText.innerText = 'PT';
+            htmlTag.lang = 'en';
+        } else {
+            btnText.innerText = 'EN';
+            htmlTag.lang = 'pt-BR';
+        }
+    }
+</script>
+
+</body>
+</html>
