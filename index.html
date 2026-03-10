@@ -432,6 +432,169 @@
         }
 
         /* =========================================
+           GEMINI AI CHAT WIDGET
+           ========================================= */
+        #ai-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 2000;
+            font-family: 'Urbanist', sans-serif;
+        }
+
+        #ai-toggle-btn {
+            background: linear-gradient(135deg, #00ff9d, #00b36e);
+            color: #030712;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 255, 157, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #ai-toggle-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 255, 157, 0.6);
+        }
+
+        #ai-chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            height: 450px;
+            background-color: #111827;
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            transform-origin: bottom right;
+            animation: popUp 0.3s ease-out forwards;
+        }
+
+        @keyframes popUp {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .ai-header {
+            background: rgba(3, 7, 18, 0.9);
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ai-header h4 {
+            color: #f9fafb;
+            margin: 0;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ai-header h4 span { color: #00ff9d; }
+
+        .ai-close-btn {
+            background: none;
+            border: none;
+            color: #9ca3af;
+            cursor: pointer;
+            font-size: 16px;
+            transition: color 0.2s;
+        }
+
+        .ai-close-btn:hover { color: #f9fafb; }
+
+        #ai-messages {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            scrollbar-width: thin;
+            scrollbar-color: #00ff9d #030712;
+        }
+
+        .ai-msg {
+            max-width: 85%;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .ai-msg.bot {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #d1d5db;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+
+        .ai-msg.user {
+            background-color: rgba(0, 255, 157, 0.15);
+            color: #00ff9d;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+            border: 1px solid rgba(0, 255, 157, 0.3);
+        }
+
+        .ai-input-area {
+            display: flex;
+            padding: 15px;
+            background: rgba(3, 7, 18, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        #ai-input {
+            flex-grow: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 20px;
+            color: #f9fafb;
+            font-family: 'Urbanist', sans-serif;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        #ai-input:focus { border-color: #00ff9d; }
+
+        #ai-send-btn {
+            background: #00ff9d;
+            color: #030712;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        #ai-send-btn:hover { transform: scale(1.05); }
+
+        .loading-dots { display: flex; gap: 4px; padding: 10px 14px; align-items: center; }
+        .dot { width: 6px; height: 6px; background-color: #00ff9d; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out both; }
+        .dot:nth-child(1) { animation-delay: -0.32s; }
+        .dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+
+        /* =========================================
            RESPONSIVE DESIGN (MOBILE & TABLETS)
            ========================================= */
         @media (max-width: 992px) {
@@ -441,8 +604,6 @@
             .slide-container.bleed-image-layout > .content-container { padding: 40px 30px; }
             .slide-container.bleed-image-layout > .image-container { height: 300px; order: -1; }
             .slide-container.bleed-image-layout img.bleed-image-side { border-left: none; border-bottom: 2px solid #00ff9d; }
-
-            /* Timeline Mobile Fix */
             .timeline-layout { flex-direction: column; align-items: flex-start; gap: 40px; margin-top: 20px; }
             .timeline-line { width: 2px; height: 100%; left: 11px; top: 0; transform: none; background: linear-gradient(180deg, rgba(0, 255, 157, 0.1), #00ff9d, rgba(0, 255, 157, 0.1)); }
             .timeline-item { width: 100%; text-align: left; padding-left: 45px; }
@@ -458,6 +619,9 @@
             .contact-item { width: 100%; justify-content: center; }
             .two-column.tiled > div, .tile { padding: 25px 20px; }
             .lang-toggle-btn { top: 10px; right: 10px; padding: 8px 14px; font-size: 14px; }
+            
+            #ai-widget { bottom: 15px; right: 15px; }
+            #ai-chat-window { width: calc(100vw - 30px); height: 400px; bottom: 70px; }
         }
     </style>
 </head>
@@ -772,22 +936,159 @@
     </div>
 </div>
 
+<!-- GEMINI AI WIDGET -->
+<div id="ai-widget">
+    <button id="ai-toggle-btn" onclick="toggleChat()" title="Conversar com a IA do Patrick">
+        <i class="fa-solid fa-robot"></i><span style="font-size: 14px; position: absolute; top: 0; right: 0;">✨</span>
+    </button>
+
+    <div id="ai-chat-window">
+        <div class="ai-header">
+            <h4><i class="fa-solid fa-robot"></i> <span>Patrick's</span> AI Assistant</h4>
+            <button class="ai-close-btn" onclick="toggleChat()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="ai-messages">
+            <div class="ai-msg bot">
+                <span class="t-pt">Olá! ✨ Eu sou o assistente virtual do Patrick. Você pode me fazer perguntas sobre a experiência dele, projetos ou habilidades em cibersegurança. Como posso ajudar?</span>
+                <span class="t-en">Hello! ✨ I am Patrick's virtual assistant. You can ask me questions about his experience, projects, or cybersecurity skills. How can I help you?</span>
+            </div>
+        </div>
+        <div class="ai-input-area">
+            <input type="text" id="ai-input" placeholder="Pergunte-me algo..." onkeypress="handleKeyPress(event)">
+            <button id="ai-send-btn" onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+</div>
+
 <script>
+    // System Language Toggle
     function toggleLanguage() {
-        // Alterna a classe no body que esconde/mostra as traduções
         document.body.classList.toggle('english-mode');
-        
-        // Atualiza o texto do botão e a meta tag HTML
         const btnText = document.getElementById('lang-text');
         const htmlTag = document.getElementById('html-tag');
+        const aiInput = document.getElementById('ai-input');
         
         if (document.body.classList.contains('english-mode')) {
             btnText.innerText = 'PT';
             htmlTag.lang = 'en';
+            aiInput.placeholder = "Ask me anything...";
         } else {
             btnText.innerText = 'EN';
             htmlTag.lang = 'pt-BR';
+            aiInput.placeholder = "Pergunte-me algo...";
         }
+    }
+
+    // AI Chat System powered by Gemini API
+    const apiKey = ""; // The execution environment will inject the API key here
+
+    const systemPrompt = `Você é o assistente virtual do portfólio de Patrick Ramos Costa. Seu objetivo é ajudar recrutadores a conhecerem melhor o Patrick.
+    Aja de forma profissional, educada e direta. Responda APENAS perguntas relacionadas ao Patrick, sua carreira e tecnologia.
+    INFORMAÇÕES SOBRE PATRICK:
+    - Nome: Patrick Ramos Costa
+    - Área principal: Cibersegurança, Resposta a Incidentes, Forense Digital.
+    - Cidade: Macapá, AP, Brasil.
+    - Formação 1: Tecnólogo em Análise e Desenvolvimento de Sistemas (UniBF) - Concluído Fev/2026.
+    - Formação 2: Pós-graduação Lato Sensu em Crimes Cibernéticos e Técnicas Forenses (UniBF) - Iniciando Mar/2026.
+    - Formação Incompleta: Ciência da Computação (UNIFAP) e Letras-Português (UEAP).
+    - Experiência 1: Agente de Pesquisas e Mapeamento no IBGE (Fev 2022 - Jan 2025). Desenvolveu rigor metodológico, coleta e análise de dados.
+    - Experiência 2: Estagiário no Ministério Público do AP (Jan 2019 - Dez 2020). Lida com processos institucionais.
+    - Experiência 3: Bolsista Iniciação Científica CNPq/OBMEP (2017). Desenvolveu raciocínio lógico-matemático avançado.
+    - Skills (Competências): Cibersegurança, Lógica de Programação, Análise de Dados. Perfil analítico e resolvedor de problemas.
+    - Idiomas: Português (Nativo), Inglês (Leitura Técnica).
+    - Diferencial: Aluno premiado na OBMEP (Olimpíada Brasileira de Matemática). Fez imersão Dev com Google Gemini.
+    Regra Importante: Responda no idioma em que a pergunta foi feita (Português ou Inglês). Seja breve (máximo de 3 frases curtas por resposta).`;
+
+    const chatWindow = document.getElementById('ai-chat-window');
+    const messagesContainer = document.getElementById('ai-messages');
+    const inputField = document.getElementById('ai-input');
+
+    function toggleChat() {
+        if (chatWindow.style.display === 'flex') {
+            chatWindow.style.display = 'none';
+        } else {
+            chatWindow.style.display = 'flex';
+            inputField.focus();
+        }
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    }
+
+    function addMessage(text, sender) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `ai-msg ${sender}`;
+        msgDiv.textContent = text;
+        messagesContainer.appendChild(msgDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function addLoading() {
+        const loadingDiv = document.createElement('div');
+        loadingDiv.className = 'ai-msg bot loading-dots';
+        loadingDiv.id = 'ai-loading';
+        loadingDiv.innerHTML = '<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
+        messagesContainer.appendChild(loadingDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function removeLoading() {
+        const loading = document.getElementById('ai-loading');
+        if (loading) loading.remove();
+    }
+
+    async function callGemini(userText) {
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+        const payload = {
+            contents: [{ parts: [{ text: userText }] }],
+            systemInstruction: { parts: [{ text: systemPrompt }] }
+        };
+
+        const retries = 5;
+        const delays = [1000, 2000, 4000, 8000, 16000];
+
+        for (let i = 0; i < retries; i++) {
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (!response.ok) throw new Error('API Error');
+                
+                const data = await response.json();
+                return data.candidates?.[0]?.content?.parts?.[0]?.text || "Desculpe, não consegui processar a resposta.";
+            } catch (error) {
+                if (i === retries - 1) {
+                    const isEnglish = document.body.classList.contains('english-mode');
+                    return isEnglish ? "Sorry, I'm having connection issues right now. Please try again later." : "Desculpe, estou com problemas de conexão no momento. Tente novamente mais tarde.";
+                }
+                await new Promise(resolve => setTimeout(resolve, delays[i]));
+            }
+        }
+    }
+
+    async function sendMessage() {
+        const text = inputField.value.trim();
+        if (!text) return;
+
+        // User Message
+        inputField.value = '';
+        addMessage(text, 'user');
+        
+        // Show Loading
+        addLoading();
+
+        // Call API
+        const responseText = await callGemini(text);
+
+        // Bot Response
+        removeLoading();
+        addMessage(responseText, 'bot');
     }
 </script>
 
