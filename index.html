@@ -133,6 +133,15 @@
             border-radius: 50px;
             border: 1px solid rgba(255, 255, 255, 0.08);
             word-break: break-all;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a.contact-item:hover {
+            background: rgba(0, 255, 157, 0.1);
+            border-color: rgba(0, 255, 157, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 255, 157, 0.1);
         }
 
         .contact-item i {
@@ -478,7 +487,6 @@
 </head>
 <body>
 
-
 <!-- Slide 1: Title Slide -->
 <div class="slide-container" id="slide1">
     <div class="title-layout">
@@ -486,14 +494,14 @@
         <p class="subtitle">Analista de Sistemas & Especialista em Cibersegurança</p>
         
         <div class="contact-row">
-            <span class="contact-item"><i class="fa-solid fa-phone"></i> (96) 9 9907-9407</span>
-            <span class="contact-item"><i class="fa-solid fa-envelope"></i> patrickramos737@gmail.com</span>
-            <span class="contact-item"><i class="fa-brands fa-linkedin"></i> patrick-ramos-costa-b78940211</span>
+            <a href="tel:+5596999079407" class="contact-item" title="Ligar para o Patrick"><i class="fa-solid fa-phone"></i> (96) 9 9907-9407</a>
+            <a href="mailto:patrickramos737@gmail.com" class="contact-item" title="Enviar E-mail"><i class="fa-solid fa-envelope"></i> patrickramos737@gmail.com</a>
+            <a href="https://www.linkedin.com/in/patrick-ramos-costa-b78940211" target="_blank" class="contact-item" title="Visitar LinkedIn"><i class="fa-brands fa-linkedin"></i> patrick-ramos-costa</a>
+            <a href="https://github.com/PatrickRam0s" target="_blank" class="contact-item" title="Visitar GitHub"><i class="fa-brands fa-github"></i> PatrickRam0s</a>
             <span class="contact-item"><i class="fa-solid fa-location-dot"></i> Macapá, AP</span>
         </div>
     </div>
 </div>
-
 
 <!-- Slide 2: Bleed Image Layout -->
 <div class="slide-container bleed-image-layout" id="slide2">
@@ -511,10 +519,9 @@
     </div>
 </div>
 
-
 <!-- Slide 3: Timeline -->
 <div class="slide-container" id="slide3">
-    <h2 class="slide-title">Experiência <span>Profissional</span></h2>
+    <h2 class="slide-title">Experiência <span>Profissional & Acadêmica</span></h2>
     <div class="content-area">
         <div class="timeline-layout">
             <div class="timeline-line"></div>
@@ -549,7 +556,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- Slide 4: Education Grid -->
 <div class="slide-container" id="slide4">
@@ -608,7 +614,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- Slide 5: Skills & Awards -->
 <div class="slide-container" id="slide5">
