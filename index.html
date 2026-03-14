@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* CONFIGURAÇÃO BASE */
+        /* THE SETUP */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -17,7 +17,7 @@
         }
 
         body {
-            background-color: #030712; /* Fundo ainda mais escuro/preto */
+            background-color: #030712; /* Deep Dark Background */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -29,12 +29,12 @@
             position: relative;
         }
 
-        /* SISTEMA DE TRADUÇÃO */
+        /* TRANSLATION SYSTEM */
         .t-en { display: none; }
         body.english-mode .t-pt { display: none; }
         body.english-mode .t-en { display: inline; }
 
-        /* BOTÃO DE IDIOMA */
+        /* LANGUAGE BUTTON */
         .lang-toggle-btn {
             position: fixed;
             top: 20px;
@@ -86,7 +86,7 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Linha Decorativa Inferior */
+        /* Decorative Bottom Line */
         .slide-container::after {
             content: '';
             position: absolute;
@@ -97,7 +97,7 @@
             background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.3), transparent);
         }
 
-        /* TIPOGRAFIA */
+        /* TYPOGRAPHY */
         .slide-container h1, .slide-container h2, .slide-container h3 {
             color: #f9fafb;
             font-weight: 700;
@@ -139,7 +139,7 @@
             width: 100%;
         }
 
-        /* LAYOUT: Título */
+        /* LAYOUT: Title Slide */
         .title-layout {
             display: flex;
             flex-direction: column;
@@ -191,7 +191,7 @@
             font-size: 20px;
         }
 
-        /* LAYOUT: Imagem Lateral */
+        /* LAYOUT: Bleed Image Right */
         .slide-container.bleed-image-layout {
             padding: 0;
             display: grid;
@@ -301,7 +301,7 @@
             font-size: clamp(14px, 2vw, 16px);
         }
 
-        /* LAYOUT: Grelha 4 Itens */
+        /* LAYOUT: Tiled Layout (4 Grid) */
         .tiled-content.grid-4 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -374,7 +374,7 @@
         .status.concluido { background: rgba(56, 189, 248, 0.2); color: #38bdf8; }
         .status.incompleto { background: rgba(107, 114, 128, 0.2); color: #9ca3af; }
 
-        /* LAYOUT: Duas Colunas Balas */
+        /* LAYOUT: Two Column Tiled Text (Bullets) */
         .two-column.tiled {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -431,7 +431,7 @@
             margin-bottom: 4px;
         }
 
-        /* RODAPÉ / FOOTER */
+        /* FOOTER */
         footer {
             width: 100%;
             max-width: 1280px;
@@ -448,7 +448,9 @@
             letter-spacing: 0.5px;
         }
 
-        /* RESPONSIVIDADE */
+        /* =========================================
+           RESPONSIVE DESIGN (MOBILE & TABLETS)
+           ========================================= */
         @media (max-width: 992px) {
             .slide-container { padding: 40px 30px; min-height: auto; }
             .slide-container::after { left: 30px; right: 30px; }
@@ -457,6 +459,7 @@
             .slide-container.bleed-image-layout > .image-container { height: 300px; order: -1; }
             .slide-container.bleed-image-layout img.bleed-image-side { border-left: none; border-bottom: 2px solid #38bdf8; }
 
+            /* Timeline Mobile Fix */
             .timeline-layout { flex-direction: column; align-items: flex-start; gap: 40px; margin-top: 20px; }
             .timeline-line { width: 2px; height: 100%; left: 11px; top: 0; transform: none; background: linear-gradient(180deg, rgba(56, 189, 248, 0.1), #38bdf8, rgba(56, 189, 248, 0.1)); }
             .timeline-item { width: 100%; text-align: left; padding-left: 45px; }
@@ -477,12 +480,10 @@
 </head>
 <body>
 
-<!-- Botão de Troca de Idioma -->
 <button class="lang-toggle-btn" onclick="toggleLanguage()" title="Switch Language">
     <i class="fa-solid fa-globe"></i> <span id="lang-text">EN</span>
 </button>
 
-<!-- Slide 1: Título -->
 <div class="slide-container" id="slide1">
     <div class="title-layout">
         <h1>Patrick <span>Ramos Costa</span></h1>
@@ -494,14 +495,13 @@
         <div class="contact-row">
             <a href="tel:+5596999079407" class="contact-item" title="Call"><i class="fa-solid fa-phone"></i> (96) 9 9907-9407</a>
             <a href="mailto:patrickramos737@gmail.com" class="contact-item" title="Email"><i class="fa-solid fa-envelope"></i> patrickramos737@gmail.com</a>
-            <a href="https://www.linkedin.com/in/patrick-ramos-costa-b78940211" target="_blank" class="contact-item" title="LinkedIn"><i class="fa-brands fa-linkedin"></i> patrick-ramos-costa</a>
+            <a href="https://www.linkedin.com/in/patrick-ramos-costa-b78940211?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="contact-item" title="LinkedIn"><i class="fa-brands fa-linkedin"></i> patrick-ramos-costa</a>
             <a href="https://github.com/PatrickRam0s" target="_blank" class="contact-item" title="GitHub"><i class="fa-brands fa-github"></i> PatrickRam0s</a>
             <span class="contact-item"><i class="fa-solid fa-location-dot"></i> Macapá, AP, <span class="t-pt">Brasil</span><span class="t-en">Brazil</span></span>
         </div>
     </div>
 </div>
 
-<!-- Slide 2: Perfil Profissional -->
 <div class="slide-container bleed-image-layout" id="slide2">
     <div class="content-container">
         <h2 class="slide-title">
@@ -515,7 +515,7 @@
             </p>
             <p>
                 <span class="t-pt">Atualmente, direciono esta base técnica primária para a proteção, mitigação e auditoria de sistemas, <span class="accent">iniciando minha especialização</span> em Crimes Cibernéticos e Técnicas Forenses.</span>
-                <span class="t-en">Currently, I am directing this technical foundation towards the protection, mitigation, and auditing of systems, <span class="accent">starting my specialization</span> in Cybercrimes and Digital Forensics.</span>
+                <span class="t-en">Currently, I am directing this technical foundation towards the protection, mitigation, and auditing of systems, <span class="accent">starting my specialization</span> in Cybercrime and Forensic Techniques.</span>
             </p>
             <p>
                 <span class="t-pt">Minha vivência estratégica em instituições como o IBGE e o Ministério Público consolidou um forte perfil analítico, elevado rigor metodológico e alta capacidade de resolução de problemas complexos.</span>
@@ -532,7 +532,6 @@
     </div>
 </div>
 
-<!-- Slide 3: Experiência -->
 <div class="slide-container" id="slide3">
     <h2 class="slide-title">
         <span class="t-pt">Experiência <span>Profissional & Acadêmica</span></span>
@@ -603,7 +602,6 @@
     </div>
 </div>
 
-<!-- Slide 4: Formação -->
 <div class="slide-container" id="slide4">
     <h2 class="slide-title">
         <span class="t-pt">Formação <span>Acadêmica</span></span>
@@ -616,10 +614,13 @@
                 <div class="title-container">
                     <div>
                         <p class="main-title">
-                            <span class="t-pt">Crimes Cibernéticos e Técnicas Forense</span>
+                            <span class="t-pt">Crimes Cibernéticos e Técnicas Forenses</span>
                             <span class="t-en">Cybercrime and Forensic Techniques</span>
                         </p>
-                        <p class="sub-title">Faculdade UniBF</p>
+                        <p class="sub-title">
+                            <span class="t-pt">Faculdade UniBF</span>
+                            <span class="t-en">UniBF University Center</span>
+                        </p>
                     </div>
                     <span class="icon-container"><i class="fa-solid fa-shield-halved"></i></span>
                 </div>
@@ -640,7 +641,10 @@
                             <span class="t-pt">Análise e Desenv. de Sistemas</span>
                             <span class="t-en">Systems Development Analysis</span>
                         </p>
-                        <p class="sub-title">Faculdade UniBF/ETEP</p>
+                        <p class="sub-title">
+                            <span class="t-pt">Faculdade UniBF</span>
+                            <span class="t-en">UniBF University Center</span>
+                        </p>
                     </div>
                     <span class="icon-container"><i class="fa-solid fa-code"></i></span>
                 </div>
@@ -706,7 +710,6 @@
     </div>
 </div>
 
-<!-- Slide 5: Skills & Prêmios -->
 <div class="slide-container" id="slide5">
     <h2 class="slide-title">
         <span class="t-pt">Hard Skills, Certificações & <span>Prêmios</span></span>
@@ -758,6 +761,13 @@
                     <span class="t-en">Courses & Awards</span>
                 </h3>
                 <ul>
+                    <li><i class="fa-solid fa-shield-virus"></i> <strong>
+                        <span class="t-pt">Introduction to Cybersecurity</span>
+                        <span class="t-en">Introduction to Cybersecurity</span>
+                    </strong><br>
+                        <span class="t-pt">Cisco Networking Academy. Fundamentos de proteção e defesa em ambientes digitais.</span>
+                        <span class="t-en">Cisco Networking Academy. Fundamentals of protection and defense in digital environments.</span>
+                    </li>
                     <li><i class="fa-solid fa-certificate"></i> <strong>
                         <span class="t-pt">Imersão Dev com Google Gemini</span>
                         <span class="t-en">Dev Immersion with Google Gemini</span>
@@ -786,7 +796,6 @@
     </div>
 </div>
 
-<!-- RODAPÉ FINAL -->
 <footer>
     <p>
         <span class="t-pt">&copy; 2026 Patrick Ramos Costa. Todos os direitos reservados.</span>
