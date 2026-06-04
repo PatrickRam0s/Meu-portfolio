@@ -1,358 +1,557 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" id="html-tag">
 <head>
     <meta charset="UTF-8">
-    <title>Currículo - Patrick Ramos Costa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - Patrick Ramos Costa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* RESET ABSOLUTO DE MARGENS PARA SELECTPDF */
-        @page {
-            margin: 0 !important;
-            size: A4 portrait;
-        }
+        /* THE SETUP */
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        body, html {
-            margin: 0 !important;
-            padding: 0 !important;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: #ffffff;
-            color: #333333;
-            width: 100%;
-            height: 100%;
+
+        body {
+            background-color: #030712; /* Deep Dark Background */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            min-height: 100vh;
+            padding: 30px 15px;
+            font-family: 'Urbanist', sans-serif;
+            overflow-x: hidden;
+            position: relative;
         }
-        
-        /* CABEÇALHO */
-        .header {
-            background-color: #0f172a; /* Slate 900 */
-            color: #ffffff;
-            padding: 40px 50px;
-            width: 100%;
-            border-bottom: 5px solid #2563eb; /* Blue 600 */
-        }
-        .header h1 {
-            margin: 0 0 5px 0;
-            font-size: 32px;
+
+        /* TRANSLATION SYSTEM */
+        .t-en { display: none; }
+        body.english-mode .t-pt { display: none; }
+        body.english-mode .t-en { display: inline; }
+
+        /* LANGUAGE BUTTON */
+        .lang-toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(56, 189, 248, 0.3); /* Cyber Blue */
+            color: #f9fafb;
+            padding: 10px 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Urbanist', sans-serif;
             font-weight: 700;
-        }
-        .header h2 {
-            margin: 0 0 10px 0;
-            font-size: 18px;
-            color: #60a5fa; /* Blue 400 */
-            font-weight: 500;
-        }
-        .header p.location {
-            margin: 0 0 20px 0;
-            font-size: 14px;
-            color: #94a3b8;
-        }
-        
-        /* LINKS DO CABEÇALHO */
-        .contact-links {
-            display: flex;
-            flex-direction: column; /* Organiza as linhas em coluna */
-            gap: 15px; /* Espaçamento vertical entre as linhas */
-            font-size: 13px;
-        }
-        .contact-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px; /* Espaçamento horizontal entre os itens */
-        }
-        .contact-row a, .contact-row span {
-            color: #cbd5e1;
-            text-decoration: none;
+            font-size: 16px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
-        .contact-row svg {
-            width: 14px;
-            height: 14px;
-            fill: #3b82f6; /* Blue 500 */
+
+        .lang-toggle-btn:hover {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: #38bdf8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.15);
+        }
+
+        .lang-toggle-btn i {
+            color: #38bdf8;
+            font-size: 18px;
+        }
+
+        /* SLIDE CONTAINER */
+        .slide-container {
+            width: 100%;
+            max-width: 1280px;
+            min-height: 720px;
+            height: auto;
+            background-color: #030712;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            padding: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Decorative Bottom Line */
+        .slide-container::after {
+            content: '';
+            position: absolute;
+            bottom: 30px;
+            left: 60px;
+            right: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.3), transparent);
+        }
+
+        /* TYPOGRAPHY */
+        .slide-container h1, .slide-container h2, .slide-container h3 {
+            color: #f9fafb;
+            font-weight: 700;
+        }
+
+        .slide-container h1 span, .slide-container h2 span, .accent {
+            color: #38bdf8; /* Cyber Blue */
+        }
+
+        .slide-container p, .slide-container li, .slide-container .subtitle {
+            color: #d1d5db;
+            font-size: clamp(16px, 2vw, 19px);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .slide-container h1 { 
+            font-size: clamp(40px, 6vw, 75px); 
+            letter-spacing: -1px; 
+            margin-bottom: 20px;
         }
         
-        /* CORPO DO CURRÍCULO */
-        .content {
-            padding: 40px 50px;
+        .slide-container .slide-title { 
+            font-size: clamp(32px, 5vw, 48px); 
+            margin-bottom: 40px; 
+            text-align: left; 
+            width: 100%; 
+        }
+        
+        .slide-container h3 { 
+            font-size: clamp(20px, 3vw, 26px); 
+            margin-bottom: 15px; 
+        }
+
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
             width: 100%;
         }
-        
-        /* SEÇÕES PRINCIPAIS */
-        .section {
-            margin-bottom: 25px;
-            page-break-inside: avoid;
+
+        /* LAYOUT: Title Slide */
+        .title-layout {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+            flex-grow: 1;
         }
-        .section-title {
-            font-size: 18px;
+
+        .title-layout .subtitle {
+            font-size: clamp(18px, 3vw, 26px);
+            color: #9ca3af;
+            max-width: 800px;
+            margin-bottom: 50px;
+        }
+
+        .contact-row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: clamp(14px, 2vw, 18px);
+            color: #f3f4f6;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            word-break: break-all;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a.contact-item:hover {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(56, 189, 248, 0.1);
+        }
+
+        .contact-item i {
+            color: #38bdf8;
+            font-size: 20px;
+        }
+
+        /* LAYOUT: Bleed Image Right */
+        .slide-container.bleed-image-layout {
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: stretch;
+        }
+
+        .slide-container.bleed-image-layout > .content-container {
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-container.bleed-image-layout > .image-container {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .slide-container.bleed-image-layout img.bleed-image-side {
+            display: block;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-left: 2px solid #38bdf8;
+        }
+
+        .bleed-text-side p {
+            margin-bottom: 20px;
+        }
+
+        /* LAYOUT: Timeline */
+        .timeline-layout {
+            align-items: center;
+            display: flex;
+            flex-grow: 1;
+            justify-content: space-between;
+            position: relative;
+            width: 100%;
+            margin-top: 40px;
+            min-height: 350px;
+        }
+
+        .timeline-line {
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0.1), #38bdf8, rgba(56, 189, 248, 0.1));
+            height: 2px;
+            left: 0;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-1px);
+            width: 100%;
+            z-index: 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            text-align: center;
+            width: 30%;
+        }
+
+        .timeline-item::after {
+            background-color: #030712;
+            border: 4px solid #38bdf8;
+            border-radius: 50%;
+            content: '';
+            height: 24px;
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            z-index: 1;
+        }
+
+        .timeline-item .content-wrapper {
+            position: absolute;
+            width: 100%;
+            left: 0;
+        }
+
+        .timeline-item:nth-child(odd) .content-wrapper {
+            bottom: 50%;
+            margin-bottom: 35px;
+        }
+
+        .timeline-item:nth-child(even) .content-wrapper {
+            top: 50%;
+            margin-top: 35px;
+        }
+
+        .timeline-item h3 {
+            color: #38bdf8;
+            font-size: clamp(18px, 2.5vw, 22px);
+            margin-bottom: 5px;
+        }
+
+        .timeline-item .date {
+            color: #9ca3af;
+            font-size: clamp(14px, 2vw, 16px);
+            margin-bottom: 10px;
             font-weight: 700;
-            color: #0f172a;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
         }
-        
-        /* TEXTO BASE */
-        p {
-            margin: 0 0 10px 0;
-            line-height: 1.5;
-            font-size: 13px;
-            color: #334155;
-            text-align: justify;
+
+        .timeline-item p {
+            font-size: clamp(14px, 2vw, 16px);
         }
-        
-        /* ITENS DE EXPERIÊNCIA E FORMAÇÃO */
-        .item {
-            margin-bottom: 15px;
-            page-break-inside: avoid;
+
+        /* LAYOUT: Tiled Layout (4 Grid) */
+        .tiled-content.grid-4 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            width: 100%;
+            height: 100%;
+            align-content: start;
         }
-        .item-header {
+
+        .tile {
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        .tile:hover {
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .tile .title-container {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 3px;
+            align-items: flex-start;
+            gap: 15px;
         }
-        .item-title {
-            font-size: 15px;
+
+        .tile .main-title {
+            color: #38bdf8;
+            font-size: clamp(18px, 2.5vw, 22px);
             font-weight: 700;
-            color: #0f172a;
             margin: 0;
+            line-height: 1.3;
         }
-        .item-date {
-            font-size: 12px;
-            font-weight: 600;
-            color: #475569;
-            background-color: #f1f5f9;
-            padding: 3px 8px;
-            border-radius: 10px;
+
+        .tile .sub-title {
+            color: #f9fafb;
+            font-size: clamp(15px, 2vw, 18px);
+            margin: 8px 0 0 0;
         }
-        .item-subtitle {
-            font-size: 13px;
-            font-weight: 600;
-            color: #64748b;
-            margin: 0 0 8px 0;
+
+        .tile .icon-container {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 55px;
+            width: 55px;
+            font-size: 22px;
+            flex-shrink: 0;
         }
-        .item-list {
-            margin: 0;
-            padding-left: 20px;
-            font-size: 13px;
-            color: #334155;
-            line-height: 1.5;
+
+        .tile .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-top: 10px;
+            align-self: flex-start;
         }
-        .item-list li {
-            margin-bottom: 4px;
-        }
-        
-        /* LAYOUT DE COLUNAS PARA A BASE */
-        .grid-2col {
-            display: table;
+
+        .status.iniciando { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+        .status.concluido { background: rgba(56, 189, 248, 0.2); color: #38bdf8; }
+        .status.incompleto { background: rgba(107, 114, 128, 0.2); color: #9ca3af; }
+
+        /* LAYOUT: Two Column Tiled Text (Bullets) */
+        .two-column.tiled {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
             width: 100%;
-            table-layout: fixed;
+            align-items: stretch;
+            height: auto;
+            flex-grow: 1;
         }
-        .col {
-            display: table-cell;
-            vertical-align: top;
+
+        .two-column.tiled > div {
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
         }
-        .col-left {
-            width: 50%;
-            padding-right: 20px;
+
+        .two-column.tiled h3 {
+            color: #38bdf8;
+            font-size: clamp(22px, 3vw, 28px);
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
         }
-        .col-right {
-            width: 50%;
-            padding-left: 20px;
-        }
-        
-        /* LISTA SIMPLES (CURSOS E IDIOMAS) */
-        .simple-list {
+
+        .two-column.tiled ul {
             list-style: none;
             padding: 0;
             margin: 0;
-            font-size: 13px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
-        .simple-list li {
-            margin-bottom: 8px;
-            line-height: 1.4;
+
+        .two-column.tiled li {
+            padding-left: 35px;
+            position: relative;
+            color: #d1d5db;
         }
-        .simple-list strong {
-            color: #0f172a;
+
+        .two-column.tiled li i {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: #38bdf8;
+            font-size: 18px;
         }
-        .simple-list span {
-            color: #64748b;
+
+        .two-column.tiled li strong {
+            color: #f9fafb;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* FOOTER */
+        footer {
+            width: 100%;
+            max-width: 1280px;
+            padding: 40px 15px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 20px;
+        }
+
+        footer p {
+            color: #6b7280;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN (MOBILE & TABLETS)
+           ========================================= */
+        @media (max-width: 992px) {
+            .slide-container { padding: 40px 30px; min-height: auto; }
+            .slide-container::after { left: 30px; right: 30px; }
+            .slide-container.bleed-image-layout { grid-template-columns: 1fr; }
+            .slide-container.bleed-image-layout > .content-container { padding: 40px 30px; }
+            .slide-container.bleed-image-layout > .image-container { height: 300px; order: -1; }
+            .slide-container.bleed-image-layout img.bleed-image-side { border-left: none; border-bottom: 2px solid #38bdf8; }
+
+            /* Timeline Mobile Fix */
+            .timeline-layout { flex-direction: column; align-items: flex-start; gap: 40px; margin-top: 20px; }
+            .timeline-line { width: 2px; height: 100%; left: 11px; top: 0; transform: none; background: linear-gradient(180deg, rgba(56, 189, 248, 0.1), #38bdf8, rgba(56, 189, 248, 0.1)); }
+            .timeline-item { width: 100%; text-align: left; padding-left: 45px; }
+            .timeline-item::after { left: 12px; top: 0; transform: translateX(-50%); }
+            .timeline-item .content-wrapper, .timeline-item:nth-child(odd) .content-wrapper, .timeline-item:nth-child(even) .content-wrapper { position: relative; bottom: auto; top: auto; margin: 0; }
+            .tiled-content.grid-4, .two-column.tiled { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .slide-container { padding: 30px 20px; }
+            .slide-container::after { left: 20px; right: 20px; }
+            .slide-container.bleed-image-layout > .content-container { padding: 30px 20px; }
+            .contact-item { width: 100%; justify-content: center; }
+            .two-column.tiled > div, .tile { padding: 25px 20px; }
+            .lang-toggle-btn { top: 10px; right: 10px; padding: 8px 14px; font-size: 14px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>Patrick Ramos Costa</h1>
-        <h2>Analista de TI Júnior | Suporte Técnico | Segurança da Informação</h2>
-        <p class="location">Macapá, Amapá, Brasil</p>
-        
-        <!-- CONTAINER PRINCIPAL DOS LINKS -->
-        <div class="contact-links">
-            
-            <!-- PRIMEIRA LINHA (3 ITENS) -->
-            <div class="contact-row">
-                <!-- Ícone de Telefone -->
-                <span>
-                    <svg width="14" height="14" viewBox="0 0 512 512"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
-                    (96) 9 9907-9407
-                </span>
-                
-                <!-- Ícone de Email -->
-                <a href="mailto:patrickramosve@gmail.com">
-                    <svg width="14" height="14" viewBox="0 0 512 512"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
-                    patrickramosve@gmail.com
-                </a>
-                
-                <!-- Ícone do Portfólio -->
-                <a href="https://patrickram0s.github.io/Meu-portfolio/">
-                    <svg width="14" height="14" viewBox="0 0 512 512"><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64H348.7c2.2 20.4 3.3 41.8 3.3 64zm28.8-64H503.9c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zm112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6c78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7c10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5c11.6 26 20.9 58.2 27 94.7zm-209 0H18.6C48.6 85.9 112.4 29.1 190.6 8.4C165.1 42.6 145.3 96.1 135.3 160zM8.1 192H131.2c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zM194.7 446.6c-11.6-26-20.9-58.2-27-94.6H344.3c-6.1 36.4-15.5 68.6-27 94.6c-10.5 23.6-22.2 40.7-33.5 51.5C272.6 508.8 263.3 512 256 512s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6C112.4 482.9 48.6 426.1 18.6 352H135.3zm358.1 0c-29.9 74.1-93.6 130.9-171.9 151.6c25.5-34.2 45.2-87.7 55.3-151.6H493.4z"/></svg>
-                    meu-portfolio
-                </a>
-            </div>
+<button class="lang-toggle-btn" onclick="toggleLanguage()" title="Switch Language">
+    <i class="fa-solid fa-globe"></i> <span id="lang-text">EN</span>
+</button>
 
-            <!-- SEGUNDA LINHA (3 ITENS) -->
-            <div class="contact-row">
-                <!-- Ícone do LinkedIn -->
-                <a href="https://linkedin.com/in/patrick-ramos-costa-b78940211">
-                    <svg width="14" height="14" viewBox="0 0 448 512"><path d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"/></svg>
-                    linkedin
-                </a>
-                
-                <!-- Ícone do GitHub -->
-                <a href="https://github.com/PatrickRamos">
-                    <svg width="14" height="14" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-                    PatrickRamos
-                </a>
-                
-                <!-- Ícone do Lattes (Perfil/Currículo) -->
-                <a href="http://lattes.cnpq.br/4749866511605727">
-                    <svg width="14" height="14" viewBox="0 0 512 512"><path d="M0 112c0-26.5 21.5-48 48-48h416c26.5 0 48 21.5 48 48v288c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112zm160 80c0-35.3-28.7-64-64-64s-64 28.7-64 64s28.7 64 64 64s64-28.7 64-64zm-64 96c-44.2 0-80 35.8-80 80v16c0 8.8 7.2 16 16 16h128c8.8 0 16-7.2 16-16v-16c0-44.2-35.8-80-80-80zm160-64h128c8.8 0 16-7.2 16-16s-7.2-16-16-16H256c-8.8 0-16 7.2-16 16s7.2 16 16 16zm0 64h128c8.8 0 16-7.2 16-16s-7.2-16-16-16H256c-8.8 0-16 7.2-16 16s7.2 16 16 16zm0 64h128c8.8 0 16-7.2 16-16s-7.2-16-16-16H256c-8.8 0-16 7.2-16 16s7.2 16 16 16z"/></svg>
-                    Lattes
-                </a>
-            </div>
-            
+<div class="slide-container" id="slide1">
+    <div class="title-layout">
+        <h1>Patrick <span>Ramos Costa</span></h1>
+        <p class="subtitle">
+            <span class="t-pt">Analista de Sistemas & Segurança da Informação</span>
+            <span class="t-en">Systems Analyst & Information Security</span>
+        </p>
+        
+        <div class="contact-row">
+            <a href="tel:+5596999079407" class="contact-item" title="Call"><i class="fa-solid fa-phone"></i> (96) 9 9907-9407</a>
+            <a href="mailto:patrickramos737@gmail.com" class="contact-item" title="Email"><i class="fa-solid fa-envelope"></i> patrickramos737@gmail.com</a>
+            <a href="https://www.linkedin.com/in/patrick-ramos-costa-b78940211?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="contact-item" title="LinkedIn"><i class="fa-brands fa-linkedin"></i> patrick-ramos-costa</a>
+            <a href="https://github.com/PatrickRam0s" target="_blank" class="contact-item" title="GitHub"><i class="fa-brands fa-github"></i> PatrickRam0s</a>
+            <span class="contact-item"><i class="fa-solid fa-location-dot"></i> Macapá, AP, <span class="t-pt">Brasil</span><span class="t-en">Brazil</span></span>
         </div>
     </div>
+</div>
 
-    <div class="content">
-        
-        <div class="section">
-            <h2 class="section-title">Resumo Profissional</h2>
-            <p>Recém-formado em Análise e Desenvolvimento de Sistemas e pós-graduando em Crimes Cibernéticos e Técnicas Forenses. Minha vivência em instituições como o IBGE e o Ministério Público proporcionou o desenvolvimento de um forte perfil analítico, rigor metodológico e facilidade para a resolução de problemas. Atualmente, busco a minha primeira oportunidade prática no mercado como Analista de TI Júnior ou Assistente de Suporte. Compreendo que a excelência em TI e segurança exige uma base sólida e vivência diária em redes, sistemas e atendimento corporativo. Sou movido por desafios, tenho muita disposição para aprender e procuro uma empresa onde possa iniciar a minha trajetória prática, contribuir com a equipe e crescer profissionalmente.</p>
+<div class="slide-container bleed-image-layout" id="slide2">
+    <div class="content-container">
+        <h2 class="slide-title">
+            <span class="t-pt">Perfil <span>Profissional</span></span>
+            <span class="t-en">Professional <span>Profile</span></span>
+        </h2>
+        <div class="bleed-text-side">
+            <p>
+                <span class="t-pt">Recém-formado em Análise e Desenvolvimento de Sistemas, possuo sólida compreensão da lógica e arquitetura tecnológica que movem as infraestruturas modernas.</span>
+                <span class="t-en">Recently graduated in Systems Development Analysis, I possess a solid understanding of the logic and technological architecture that drive modern infrastructures.</span>
+            </p>
+            <p>
+                <span class="t-pt">Atualmente, direciono esta base técnica primária para a proteção, mitigação e auditoria de sistemas, <span class="accent">iniciando minha especialização</span> em Crimes Cibernéticos e Técnicas Forenses.</span>
+                <span class="t-en">Currently, I am directing this technical foundation towards the protection, mitigation, and auditing of systems, <span class="accent">starting my specialization</span> in Cybercrime and Forensic Techniques.</span>
+            </p>
+            <p>
+                <span class="t-pt">Minha vivência estratégica em instituições como o IBGE e o Ministério Público consolidou um forte perfil analítico, elevado rigor metodológico e alta capacidade de resolução de problemas complexos.</span>
+                <span class="t-en">My strategic experience in institutions such as the IBGE and the Public Prosecutor's Office has consolidated a strong analytical profile, high methodological rigor, and an advanced capacity for complex problem-solving.</span>
+            </p>
+            <p>
+                <span class="t-pt">Busco atuar ativamente nas verticais de Segurança da Informação, Resposta a Incidentes e Forense Computacional, identificando vulnerabilidades e apoiando a tomada de decisões em ambientes corporativos e públicos.</span>
+                <span class="t-en">I aim to actively work in Information Security, Incident Response, and Computational Forensics, identifying vulnerabilities and supporting strategic decision-making in corporate and public environments.</span>
+            </p>
         </div>
-
-        <div class="section">
-            <h2 class="section-title">Experiência Profissional & Acadêmica</h2>
-            
-            <div class="item">
-                <div class="item-header">
-                    <h3 class="item-title">Instituto Brasileiro de Geografia e Estatística</h3>
-                    <span class="item-date">Fev 2022 – Jan 2025</span>
-                </div>
-                <p class="item-subtitle">Agente de Pesquisas e Mapeamento</p>
-                <ul class="item-list">
-                    <li>Atuação com foco em levantamento de dados, pesquisa em campo e mapeamento estruturado.</li>
-                    <li>Desenvolvimento de rigor metodológico, alta capacidade analítica e identificação de padrões complexos em grandes volumes de informação.</li>
-                </ul>
-            </div>
-            
-            <div class="item">
-                <div class="item-header">
-                    <h3 class="item-title">Ministério Público do Estado do Amapá</h3>
-                    <span class="item-date">Jan 2019 – Dez 2020</span>
-                </div>
-                <p class="item-subtitle">Estagiário</p>
-                <ul class="item-list">
-                    <li>Estágio de ensino médio com foco em apoio às rotinas internas da instituição.</li>
-                    <li>Desenvolvimento de competências organizacionais e suporte direto aos processos administrativos e documentais.</li>
-                </ul>
-            </div>
-            
-            <div class="item">
-                <div class="item-header">
-                    <h3 class="item-title">CNPq / PIC OBMEP</h3>
-                    <span class="item-date">Jan 2017 – Dez 2017</span>
-                </div>
-                <p class="item-subtitle"> Bolsista de Iniciação Científica Jr. (PIC)</p>
-                <ul class="item-list">
-                    <li>Selecionado para o programa de iniciação científica por mérito e premiação na Olimpíada Brasileira de Matemática das Escolas Públicas (OBMEP).</li>
-                    <li>Projeto focado no desenvolvimento do raciocínio lógico e matemático estruturado.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="grid-2col">
-            <div class="col col-left">
-                <div class="section">
-                    <h2 class="section-title">Formação Acadêmica</h2>
-                    
-                    <div class="item">
-                        <div class="item-header">
-                            <h3 class="item-title">Especialização em Crimes Cibernéticos e Técnicas Forenses</h3>
-                            <span class="item-date">2026 - Atual</span>
-                        </div>
-                        <p class="item-subtitle">Faculdade UniBF (Pós-graduação)</p>
-                    </div>
-                    
-                    <div class="item">
-                        <div class="item-header">
-                            <h3 class="item-title">Análise e Desenvolvimento de Sistemas</h3>
-                            <span class="item-date">2024 - 2026</span>
-                        </div>
-                        <p class="item-subtitle">Faculdade ETEP / UniBF (Parceria)</p>
-                    </div>
-                    
-                    <div class="item">
-                        <div class="item-header">
-                            <h3 class="item-title">Ciência da Computação (Incompleto)</h3>
-                            <span class="item-date">2022 - 2024</span>
-                        </div>
-                        <p class="item-subtitle">UNIFAP - Universidade Federal do Amapá</p>
-                    </div>
-                    
-                    <div class="item">
-                        <div class="item-header">
-                            <h3 class="item-title">Letras - Português (Incompleto)</h3>
-                            <span class="item-date">2021 - 2022</span>
-                        </div>
-                        <p class="item-subtitle">UEAP - Universidade do Estado do Amapá</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col col-right">
-                <div class="section">
-                    <h2 class="section-title">Cursos & Certificações</h2>
-                    <ul class="simple-list">
-                        <li>
-                            <strong>Introduction to Cybersecurity</strong><br>
-                            <span>Cisco Networking Academy (2026)</span>
-                        </li>
-                        <li>
-                            <strong>Imersão Dev com Google Gemini</strong><br>
-                            <span>Alura (2024)</span>
-                        </li>
-                        <li>
-                            <strong>Semana da Computação</strong><br>
-                            <span>Engajamento Comunitário (2022)</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="section">
-                    <h2 class="section-title">Idiomas</h2>
-                    <ul class="simple-list">
-                        <li><strong>Português:</strong> <span>Nativo</span></li>
-                        <li><strong>Inglês:</strong> <span>Intermediário </span></li>
-                        <li><strong>Japonês:</strong> <span>Básico </span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
     </div>
-</body>
-</html>
+    <div class="image-container">
+        <img class="bleed-image-side" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" alt="Cybersecurity Concept">
+    </div>
+</div>
+
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">
+        <span class="t-pt">Experiência <span>Profissional & Acadêmica</span></span>
+        <span class="t-en">Professional & Academic <span>Experience</span></span>
+    </h2>
+    <div class="content-area">
+        <div class="timeline-layout">
+            <div class="timeline-line"></div>
+            
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <div class="date">
+                        <span class="t-pt">Fev 2022 - Jan 2025</span>
+                        <span class="t-en">Feb 2022 - Jan 2025</span>
+                    </div>
+                    <h3>
+                        <span class="t-pt">Agente de Pesquisas</span>
+                        <span class="t-en">Research Agent</span>
+                    </h3>
+                    <p style="color: #f9fafb; font-weight: 500; margin-bottom: 8px;">IBGE</p>
+                    <p>
+                        <span class="t-pt">Atuação com elevado rigor metodológico na coleta, processamento e análise de dados. Desenvolvimento de visão analítica crítica e identificação de padrões.</span>
+                        <span class="t-en">Performance with high methodological rigor in data collection, processing, an
